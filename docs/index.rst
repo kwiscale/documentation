@@ -11,15 +11,15 @@ Contents:
 .. toctree::
    :maxdepth: 3
 
-   intro.md
-   gettingstarted.md
-   develop/generalities.md
-   develop/structure.md
-   develop/requesthandler.md
-   develop/websockethandler.md
-   templates/intro.md
-   addons/addons.md
-   addons/template.md
+   intro
+   gettingstarted
+   develop/generalities
+   develop/structure
+   develop/requesthandler
+   develop/websockethandler
+   templates/intro
+   addons/addons
+   addons/template
 
 
 
