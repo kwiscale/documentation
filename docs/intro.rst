@@ -58,7 +58,7 @@ from "OOP".
 That's why we decided to implement methods that deals with
 ResponseWriter and Request internaly, letting developpers to use
 
-.. code:: go
+.. code-block:: go
 
     h.WriteString("Hello")
     //or 
@@ -66,13 +66,13 @@ ResponseWriter and Request internaly, letting developpers to use
 
 So, you will not find the *standard* and largely used:
 
-.. code:: go
+.. code-block:: go
 
     func Get (w http.ResponseWriter, r *http.Request)
 
 But you will be able to get this values if you really need them:
 
-.. code:: go
+.. code-block:: go
 
     func (h *Handler) Get(){
         w := h.GetResponse()

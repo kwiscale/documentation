@@ -119,7 +119,7 @@ from a handler name.
 
 Example:
 
-.. code:: go
+.. code-block:: go
 
     type MyHandler struct { kwiscale.RequestHandler }
 
@@ -144,7 +144,7 @@ To reverse an url, you need the name of the handler. The "kwiscale.App"
 can provide the named route and you may use ``URL`` to return the
 corresponding URL. Here is an example:
 
-.. code:: go
+.. code-block:: go
 
 
     // Route /user/{userid:\d+}
@@ -160,13 +160,13 @@ Named route
 If you want to not use handler name based on reflected value, you may
 use ``AddNamedRoute()`` instead:
 
-.. code:: go
+.. code-block:: go
 
     app.AddNamedRoute("/user/{userid:\d+}", UserHandler{}, "users")
 
 So, to reverse URL:
 
-.. code:: go
+.. code-block:: go
 
     // Route /user/{userid:\d+}
     url := myhandler.GetApp().GetRoute("users").URL("userid", "123456")

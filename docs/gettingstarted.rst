@@ -11,7 +11,7 @@ You need to set ``$PATH`` to append ``$GOPATH/bin``.
 
 An example ``.bashrc`` modification:
 
-.. code:: bash
+.. code-block:: bash
 
     export GOPATH=~/goproject
     export PATH=$GOPATH/bin:$PATH
@@ -19,14 +19,14 @@ An example ``.bashrc`` modification:
 After having set those variables, you **must** reset your shell. Restart
 your session or call:
 
-.. code:: bash
+.. code-block:: bash
 
     source ~/.bashrc
 
 It's recommanded to install ``goimports`` command that kwiscale CLI will
 try to call:
 
-.. code:: bash
+.. code-block:: bash
 
     go get -u golang.org/x/tools/cmd/goimports
 
@@ -65,7 +65,7 @@ You may install kwiscale cli:
 Right now, if you set ``$GOPATH/bin`` in your ``$PATH``, the "kwiscale"
 command should work:
 
-.. code:: bash
+.. code-block:: bash
 
     $ kwiscale
     NAME:
@@ -102,13 +102,13 @@ It's recommanded to use environment variables to not repeat paths in
 command. To create an application named "kwiscale-tutorial", please set
 this environment variable:
 
-.. code:: bash
+.. code-block:: bash
 
     export KWISCALE_PROJECT=kwiscale-tutorial
 
 Now, create application:
 
-.. code:: bash
+.. code-block:: bash
 
     kwiscale new app
 
@@ -117,7 +117,7 @@ This command should create a directory named
 
 Create a new handler to respond to the ``/`` route that is the "index":
 
-.. code:: bash
+.. code-block:: bash
 
     kwiscale new handler index "/"
 
@@ -130,7 +130,7 @@ This command makes changes in ``$GOPATH/src/kwiscale-tutorial``:
 You may now edit ``$GOPATH/src/kwiscale-tutorial/handlers/index.go`` to
 add "Get" method
 
-.. code:: go
+.. code-block:: go
 
     package handlers
 
@@ -160,7 +160,7 @@ Create a project directory
 
 Now create ``config.yml``:
 
-.. code:: yaml
+.. code-block:: yaml
 
     listen: :8000
     session:
@@ -169,7 +169,7 @@ Now create ``config.yml``:
 
 Edit ``./handlers/index.go``:
 
-.. code:: go
+.. code-block:: go
 
     package handlers
 
@@ -186,7 +186,7 @@ Edit ``./handlers/index.go``:
 
 Now, create ``main.go``:
 
-.. code:: go
+.. code-block:: go
 
     package main
 
@@ -213,7 +213,7 @@ Create a project directory
 
 Edit ``./handlers/index.go``:
 
-.. code:: go
+.. code-block:: go
 
     package handlers
 
@@ -230,7 +230,7 @@ Edit ``./handlers/index.go``:
 
 Create a ``main.go`` file:
 
-.. code:: go
+.. code-block:: go
 
     package main
 
@@ -254,7 +254,7 @@ Launch application
 
 Go to the project path and launch:
 
-.. code:: bash
+.. code-block:: bash
 
     go run main.go
 
@@ -279,7 +279,7 @@ let's try to create a new handler manually and regenerate the main file.
 If you didn't generate application with the CLI, you should change your
 main.go file to append special comments:
 
-.. code:: go
+.. code-block:: go
 
     //...
     func main(){
@@ -293,7 +293,7 @@ between this lines**, you will lose your code !
 In ``handlers`` directory, append a new file named "user.go" and append
 an new "UserHandler":
 
-.. code:: go
+.. code-block:: go
 
     package handlers
 
@@ -315,7 +315,7 @@ an new "UserHandler":
 
 In ``config.yml``:
 
-.. code:: yaml
+.. code-block:: yaml
 
     routes:
       /:
@@ -329,13 +329,13 @@ route definition will set ``handler.Vars["username"]``.
 
 Now, call this command:
 
-.. code:: bash
+.. code-block:: bash
 
     kwiscale generate
 
 Let's take a look in main.go:
 
-.. code:: go
+.. code-block:: go
 
     package main
 

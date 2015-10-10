@@ -14,7 +14,7 @@ Built-in template engine
 Create a template directory named "templates". Create a file named
 "templates/index.html" and append this content:
 
-.. code:: html
+.. code-block:: html
 
     <!doctype html>
     <html>
@@ -30,7 +30,7 @@ Create a template directory named "templates". Create a file named
 
 Then, in ``main.go``:
 
-.. code:: go
+.. code-block:: go
 
     package main
 
@@ -70,7 +70,7 @@ To use Pongo2 template, install addon:
 
 Create templates directory and set ``templates/index.html``:
 
-.. code:: html
+.. code-block:: html
 
     <!doctype html>
     <html>
@@ -86,7 +86,7 @@ Create templates directory and set ``templates/index.html``:
 
 Then, in ``main.go``:
 
-.. code:: go
+.. code-block:: go
 
     package main
 

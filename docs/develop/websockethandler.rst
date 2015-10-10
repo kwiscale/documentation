@@ -39,7 +39,7 @@ impement :
 
 Example:
 
-.. code:: go
+.. code-block:: go
 
 
     // A standard type to communicate
@@ -81,7 +81,7 @@ WSStringHandler interface. That means you must implement
 
 Example:
 
-.. code:: go
+.. code-block:: go
 
 
     type MyWS struct { kwiscale.WebSocketHanlder}
@@ -109,7 +109,7 @@ The method should make a loop to read messages from client.
 
 Example:
 
-.. code:: go
+.. code-block:: go
 
 
     type MyWS struct {kwiscale.WebSocketHandler}

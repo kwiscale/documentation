@@ -35,7 +35,7 @@ The addon should import "kwiscale" and call ``RegisterDatabase()``
 function. Commonly, you have to call this function in the ``init()``
 function of you package.
 
-.. code:: go
+.. code-block:: go
 
     package kwiscaledbexample
 
@@ -57,7 +57,7 @@ Interface to implement
 
 The interface to implement:
 
-.. code:: go
+.. code-block:: go
 
     type DB interface {
         SetOptions(DBOptions)
@@ -112,7 +112,7 @@ developpers. But a common way to name the package is
 Commonly, you have to call this function in the ``init()`` function of
 your package.
 
-.. code:: go
+.. code-block:: go
 
     package kwiscaletemplateexample
 
@@ -134,7 +134,7 @@ Interface
 
 The interface to implement:
 
-.. code:: go
+.. code-block:: go
 
     type Template interface {
      // Render method to implement to compile and run template

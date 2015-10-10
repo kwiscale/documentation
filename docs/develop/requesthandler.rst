@@ -32,7 +32,7 @@ continue to serve with HTTP verb method.
 
 Example:
 
-.. code:: go
+.. code-block:: go
 
     type PrivateHandler struct { kwiscale.RequestHandler}
 
@@ -60,7 +60,7 @@ Example:
 This ``PrivateHandler`` can be used as a "parent" handler to privatize
 other handlers:
 
-.. code:: go
+.. code-block:: go
 
 
     type AdminHandler { PrivateHandler }
