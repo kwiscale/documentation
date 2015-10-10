@@ -1,11 +1,12 @@
-# Usage
+# RequestHandler
+## Usage
 
 RequestHandler handles HTTP verbs (Get, Post, Put, Delete, Head, Pathch, Trace, Option) as structure method.
 
 It implements IBaseHandler, each HTTP verb is already implemented but returns a 404 Error by default. That way, you only have to create your own RequestHandler based type to implement the needed method.
 
 
-# Call story
+## Call story
 
 When a client enter an URL, the framework finds the right handler to use. Then your own request handler is spawned (as a new instance) and a list of methods are called:
 

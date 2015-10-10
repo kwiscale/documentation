@@ -1,4 +1,6 @@
-# Behind the scene
+# Developping with Kwiscale
+
+## Behind the scene
 
 kwiscale is a web framework that uses [GorillaToolkit](http://www.gorillatoolkit.org/). The main purpose is to allow developers to create handlers that serve reponses.
 
@@ -9,7 +11,56 @@ There are two Handlers types:
 
 Kwiscale proposes addon system to be able to plug template engines and session engines. By default you may be able to use the standard html/template package provided by Go and session by encrypted cookies provided by GorillaToolkit.
 
-# What is provided
+
+## Project Structure
+
+### Recommandation is not obligation
+
+The common structure we give here is not mandatory. You can prefer other file structure and project managment. 
+
+### The standard Kwiscale structure
+
+In a common usage, the following file structure is recommanded:
+
+```
+[projectpath]/
+    main.go
+    handlers/
+        index.go
+        [ohter name].go
+        ...
+    templates/
+        index.html
+        - common/
+            footer.html
+            header.html
+            menu.html
+        - home/
+            main.go
+    statics/
+        - js/
+            ...
+        - css/
+            ...
+```
+
+Note that "handlers" directory may contains subpackages. The goal is to classify HTTP handlers in the same directory. An example:
+
+```
+handlers/
+    index.go
+    user/
+        auth.go
+        register.go
+        profile-edition.go
+    cms/
+        page.go
+        edit.go
+    blog/
+        index.go
+        ticket.go
+```
+
 
 ## Handler story
 
@@ -93,6 +144,4 @@ So, to reverse URL:
 // Route /user/{userid:\d+}
 url := myhandler.GetApp().GetRoute("users").URL("userid", "123456")
 ```
-
-
 

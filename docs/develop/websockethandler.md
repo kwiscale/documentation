@@ -1,4 +1,5 @@
-# Usage
+# Websocket Handler
+## Usage
 
 WebSocketHandler will accept websocket connection and react on events. There are 3 ways to intercept client messages:
 
@@ -19,7 +20,7 @@ Using the URL path, WebSocketHandler provides way to send message in several for
 2. OnJSON
 3. OnMessage
 
-# Basic usage
+## Basic
 
 The most common way to use websocket is to listen JSON message or text message. Then answer to the client.
 
@@ -86,7 +87,7 @@ func (w *MyWS) OnMessage(s string, err error) {
 
 ```
 
-# Serving WebSocket
+## Serving WebSocket
 
 You may implement your own server loop implementing `WSServer` interface, that means you may implement the method:
 
@@ -124,9 +125,7 @@ Using `Serve()` can be very usefull to make specific manipulation on connection 
 
 
 
-
-
-# Rooms
+## Rooms
 
 In the following explanation, `XXX` shoud be replace by `JSON` or `Text`, respectivally to send JSON or string message. The complete list follows explanations.
 

@@ -1,4 +1,6 @@
-# Prerequists
+# Getting Started
+
+## Prerequists
 
 You have to install `go` and have set `$GOPATH` to point on a writable directory. 
 
@@ -25,7 +27,7 @@ go get -u golang.org/x/tools/cmd/goimports
 
 **Important**: If you don't install `goimports`, kwiscale CLI may have problem to generate a working main.go file.
 
-# Installation
+## Installation
 
 Kwiscale is a standard Go package, so you may install it with the `go get` command. 
 
@@ -75,11 +77,11 @@ GLOBAL OPTIONS:
 
 ```
 
-# Basic application
+## Basic application
 
 You may create and modify application by using the `kwiscale` cli or manually. 
 
-## With CLI
+### With CLI
 
 It's recommanded to use environment variables to not repeat paths in command. To create an application named "kwiscale-tutorial", please set this environment variable:
 
@@ -124,9 +126,9 @@ func (h *IndexHandler) Get() {
 }
 ```
 
-## Manually 
+### Manually 
 
-### With config file
+#### With config file
 
 
 Create a project directory
@@ -182,7 +184,7 @@ func main(){
 }
 ```
 
-### Without config file
+#### Without config file
 
 Create a project directory
 
@@ -231,7 +233,7 @@ func main(){
 ```
 
 
-# Launch application
+## Launch application
 
 Go to the project path and launch:
 
@@ -243,7 +245,7 @@ By default, application listens ":8000" port. You may now open a browser and go 
 
 The page should display "Hello you", if not please check output on terminal
 
-# Adding routes and handlers with CLI
+## Adding routes and handlers with CLI
 
 The CLI helps a lot to create handlers and routes. There are 2 ways:
 
