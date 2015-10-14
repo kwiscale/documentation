@@ -78,12 +78,14 @@ Handler story
 
 When an user calls a route, Kwiscale will find the corresponding handler
 in a stack. When a route matches, kwiscale app detect handler type and
-call a serie of methods:
+call a serie of methods (see :ref:`handler-process`)
+
+.. _handler-process:
 
 .. figure:: ../images/handler-process.png
    :alt: Handler story
 
-   Handler story
+   Handler story diagram
 
 Serve static files
 ------------------
