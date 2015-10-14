@@ -76,7 +76,7 @@ classify HTTP handlers in the same directory. An example:
 Handler story
 -------------
 
-When an user calls a route, Kwiscale will find the corresponding handler
+When a user calls a route, Kwiscale will find the corresponding handler
 in a stack. When a route matches, kwiscale app detect handler type and
 call a serie of methods (see :ref:`handler-process`)
 
