@@ -17,7 +17,7 @@ Contents:
    develop/structure
    develop/requesthandler
    develop/websockethandler
-   templates/intro
+   templates/usage
    addons/addons
    addons/template
 

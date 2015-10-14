@@ -51,7 +51,7 @@ Then, in ``main.go``:
         app := kwiscale.NewApp(&kwiscale.Config{
             TemplateDir : "./templates",
         })
-        app.AddRoute("/", HomeHandler{})
+        app.AddRoute("/", &HomeHandler{})
         app.ListenAndServe()
     }
 
@@ -109,6 +109,6 @@ Then, in ``main.go``:
             TemplateDir:    "./templates",
             TemplateEngine: "pongo2"
         })
-        app.AddRoute("/", HomeHandler{})
+        app.AddRoute("/", &HomeHandler{})
         app.ListenAndServe()  
     }

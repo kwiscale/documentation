@@ -83,8 +83,10 @@ command should work:
        help, h  Shows a list of commands or help for one command
        
     GLOBAL OPTIONS:
-       --project "kwiscale-app" project name, will set $GOPATH/src/[projectname] [$KWISCALE_PROJECT]
-       --handlers "handlers"    handlers package name [$KWISCALE_HANDLERS]
+       --project "kwiscale-app" project name, will set \
+                $GOPATH/src/[projectname] [$KWISCALE_PROJECT]
+       --handlers "handlers"    handlers package name \
+                [$KWISCALE_HANDLERS]
        --help, -h           show help
        --generate-bash-completion   
        --version, -v        print the version
@@ -124,7 +126,7 @@ Create a new handler to respond to the ``/`` route that is the "index":
 This command makes changes in ``$GOPATH/src/kwiscale-tutorial``:
 
 -  it appends "/" route in ``config.yml``
--  it creates ``handlers/index.go`` containing ``IndexHandler``
+-  it creates ``handlers/index.go`` containing ``IndexHandler`` and register call
 -  it creates or change ``main.go`` to add route to the "app"
 
 You may now edit ``$GOPATH/src/kwiscale-tutorial/handlers/index.go`` to
@@ -138,12 +140,17 @@ add "Get" method
         "gopkg.in/kwiscale/framework.v0"
     )
 
+    func init() {
+        kwiscale.Register(&IndexHandler{})
+    }
+
     type IndexHandler struct{ kwiscale.RequestHandler }
 
     // Add this method to serve
     func (h *IndexHandler) Get() {
         h.WriteString("Hello world")
     }
+
 
 Manually
 ~~~~~~~~
@@ -177,6 +184,10 @@ Edit ``./handlers/index.go``:
         "gopkg.in/kwiscale/framework.v1"
     )
 
+    func init(){
+        kwiscale.Register(&IndexHandler{})
+    }
+
     type IndexHandler struct{ kwiscale.RequestHandler }
 
     // Add this method to serve
@@ -191,15 +202,16 @@ Now, create ``main.go``:
     package main
 
     import (
-        "./handlers"
+        _ "kwiscale-tutorial/handlers"
         "gopkg.in/kwiscale/framework.v1"
     )
 
     func main(){
         app := kwiscale.NewAppFromConfigFile()
-        app.AddRoute("/", handlers.IndexHandler{})
         app.ListenAndServe()
     }
+
+**Note**: ``handlers`` package is imported with an underscore here. As you can see, we don't use the package in ``main.go`` but ``app`` will register handlers itself. If the package is not imported, application will panic.
 
 Without config file
 ^^^^^^^^^^^^^^^^^^^
@@ -221,6 +233,12 @@ Edit ``./handlers/index.go``:
         "gopkg.in/kwiscale/framework.v1"
     )
 
+    func init(){
+        // not mandatory but recommanded if you want
+        // to use config.yml file later to map routes.
+        kwiscale.Register(&IndexHandler{})
+    }
+
     type IndexHandler struct{ kwiscale.RequestHandler }
 
     // Add this method to serve
@@ -235,16 +253,17 @@ Create a ``main.go`` file:
     package main
 
     import (
-        "./hanlders"
+        "kwiscale-tutorial/handlers"
         "gopkg.in/kwiscale/framework.v1"
     )
-
 
     func main(){
         // Create a new application (nil for default configuration)
         app := kwiscale.NewApp(nil)
+
         // Add a new route
-        app.AddRoute("/", HomeHandler{})
+        app.AddRoute("/", &handlers.IndexHandler{})
+
         // start service
         app.ListenAndServe()
     }
@@ -264,34 +283,42 @@ and go to http://127.0.0.1:8000.
 The page should display "Hello you", if not please check output on
 terminal
 
-Adding routes and handlers with CLI
------------------------------------
+Adding routes and handlers
+--------------------------
 
-The CLI helps a lot to create handlers and routes. There are 2 ways:
+The CLI helps a lot to create handlers and routes.
 
--  call "kwiscale new handler" to create new handler
--  or create handlers and add route in config.yml then call
-   ``kwiscale generate`` to change ``main.go``
+But you may create handlers and routes yourself inside ``config.yml`` file and appending your handler package file in application.
 
-The first one was presented earlier when we generate "IndexHandler",
-let's try to create a new handler manually and regenerate the main file.
 
-If you didn't generate application with the CLI, you should change your
-main.go file to append special comments:
+Create handler with CLI:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: go
+:: 
+    
+    kwiscale new handler user "/user/{username:.+}"
 
-    //...
-    func main(){
-        //@routes@
-        //@end routes@
-    }
+Create handler without CLI:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-CLI will rewrite routes inside this comments. So **do not append code
-between this lines**, you will lose your code !
+In ``handlers`` directory, append a new file named "user.go" 
 
-In ``handlers`` directory, append a new file named "user.go" and append
-an new "UserHandler":
+In ``config.yml`` you have to set new route if you didn't use CLI:
+
+.. code-block:: yaml
+
+    routes:
+      /:
+        handler: handlers.IndexHandler
+      /user/{username:.+}:
+        handler: handlers.UserHandler
+
+
+
+Both CLI and manually:
+~~~~~~~~~~~~~~~~~~~~~~
+
+Now append a method to respond to GET:
 
 .. code-block:: go
 
@@ -300,6 +327,12 @@ an new "UserHandler":
     import (
         "gopkg.in/kwiscale/framework.v1"
     )
+
+    func init(){
+        // Mandatory if you are using config.yml to 
+        // map routes and handlers.
+        kwiscale.Register(&UserHandler{})
+    }
 
     // Our new handler
     type UserHandler struct { kwiscale.RequestHandler }
@@ -313,51 +346,9 @@ an new "UserHandler":
         h.WriteString("User name:" + name)
     }
 
-In ``config.yml``:
-
-.. code-block:: yaml
-
-    routes:
-      /:
-        handler: handlers.IndexHandler
-      /user/{username:.+}:
-        handler: handlers.UserHandler
 
 As you can see, the route can take a "username" that should respect
 regular expression ".+" (at least one char). The "username" key in the
-route definition will set ``handler.Vars["username"]``.
+route definition will set ``handler.Vars["username"]`` in UserHandler.
 
-Now, call this command:
-
-.. code-block:: bash
-
-    kwiscale generate
-
-Let's take a look in main.go:
-
-.. code-block:: go
-
-    package main
-
-    import (
-        "kwtest/handlers"
-
-        "gopkg.in/kwiscale/framework.v0"
-    )
-
-    func main() {
-
-        app := kwiscale.NewAppFromConfigFile()
-
-        //@routes@ -- DO NOT REMOVE THIS COMMENT
-        app.AddRoute(`/`, handlers.IndexHandler{})
-        app.AddRoute(`/user/{id:.+}`, handlers.UserHandler{})
-        //@end routes@ -- DO NOT REMOVE THIS COMMENT
-
-        app.ListenAndServe()
-    }
-
-It's **mandatory** to let the special comments to let CLI append routes.
-Right now, routes are defined in application and you may relaunch
-application, then open http://127.0.0.1:8000/user/Foo to display "Hello
-Foo" in you browser.
+Right now, routes and handlers are defined, you may relaunch application and open http://127.0.0.1:8000/user/Foo to display "Hello Foo" in you browser.

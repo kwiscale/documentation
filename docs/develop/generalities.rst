@@ -97,7 +97,7 @@ static files instead of using static handler provided by Kwiscale.
 To serve static files (css, js, images, and so on) you may configure
 Kwiscale.App like this:
 
-::
+.. code-block:: go
 
     cfg := kwiscale.Config{
         StaticDir: "./statics",
