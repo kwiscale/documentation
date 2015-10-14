@@ -39,7 +39,7 @@ In a common usage, the following file structure is recommanded:
         main.go
         handlers/
             index.go
-            [ohter name].go
+            [other name].go
             ...
         templates/
             index.html
