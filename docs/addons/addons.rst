@@ -1,26 +1,9 @@
 Addons creation
 ===============
 
-Kwiscale provides extensibility for database, session and template
-engines.
-
-Database Addons
----------------
-
-Goal
-~~~~
-
-Kwiscale aims to give a "database engine agnostic" database system to
-allows usage of a lot of database. To provide an ORM there are a lot of
-complexity to manage.
-
-Kwiscale project refuses to reinvent the wheel and provides a simple
-interface to implement in addons.
-
-Addons can:
-
--  simply map some well known packages to the interface
--  manage database itself
+Kwiscale provides extensibility for session and template
+engines. Soon, an ORM will be provided and you will be able to 
+create database drivers.
 
 Template addons
 ---------------
