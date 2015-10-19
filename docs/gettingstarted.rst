@@ -137,7 +137,7 @@ add "Get" method
     package handlers
 
     import (
-        "gopkg.in/kwiscale/framework.v0"
+        "gopkg.in/kwiscale/framework.v1"
     )
 
     func init() {
