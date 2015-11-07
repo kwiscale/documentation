@@ -12,7 +12,7 @@ Kwiscale can be deployed in `Google App Engine`_.
 
 You should download the go app engine environment and follow instruction to launch or deploy application.
 
-Open your main package file, eg. hello/hello.go - import kwiscale, create a handler and change `init()` function to handle application:
+Open your main package file, eg. hello/hello.go - import kwiscale, create a handler and change ``init()`` function to handle application:
 
 .. code-block:: go
 
@@ -48,7 +48,7 @@ Behind the scene
 
 With App Engine, should not give a full application program (no "main" package). You must provide a package that provides "handles". App Engine makes use of "http" package to "Listen" connection. "Http" package provides a "handling" system to map functions and handler to the default "ServerMux".
 
-Kwiscale application respects the `net/http.Handler` interface (providing ServeHTTP method). That's why you can request http to "handle" your application.
+Kwiscale application respects the ``net/http.Handler`` interface (providing ServeHTTP method). That's why you can request http to "handle" your application.
 
 By calling:
 

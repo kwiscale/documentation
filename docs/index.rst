@@ -17,8 +17,6 @@ Contents:
    develop/generalities
    develop/GAE
    develop/structure
-   develop/requesthandler
-   develop/websockethandler
    templates/usage
    addons/addons
    addons/template

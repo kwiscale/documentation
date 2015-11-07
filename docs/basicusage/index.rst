@@ -19,7 +19,7 @@ Set project environment variable to ease development, then enerate application a
     kwiscale new handler index "/" home
     cd $GOPATH/src/$KWISCALE_PROJECT
 
-Create `templates/index.tmpl`:
+Create ``templates/index.tmpl``:
 
 .. code-block:: html
     
@@ -35,7 +35,7 @@ Create `templates/index.tmpl`:
     </body>
     </html>
 
-Create `template/home.tmpl`:
+Create ``template/home.tmpl``:
 
 .. code-block:: html
     
