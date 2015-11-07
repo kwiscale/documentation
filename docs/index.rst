@@ -12,8 +12,10 @@ Contents:
    :maxdepth: 3
 
    intro
+   basicusage/index
    gettingstarted
    develop/generalities
+   develop/GAE
    develop/structure
    develop/requesthandler
    develop/websockethandler
